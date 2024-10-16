@@ -24,18 +24,18 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "rg" {
-  name     = "1-c701a24f-playground-sandbox"
-  location = "South Central US"
+  name     = var.azure_resource_group_name
+  location = var.location
 }
 
 resource "azurerm_eventhub_namespace" "ehns" {
   name                = "ehns-makeazuresuckless"
-  location            = "South Central US"
+  location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   sku                 = "Standard"
   capacity            = 1
 
   tags = {
-    environment = "Production"
+    environment = "sbx"
   }
 }
