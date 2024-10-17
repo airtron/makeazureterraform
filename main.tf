@@ -8,6 +8,10 @@ terraform {
       source  = "hashicorp/azuread"
       version = "~> 2.15.0"
     }
+    random = {
+      source  = "hashicorp/random"
+      version = "~>3.0"
+    }
   }
   backend "azurerm" {
     resource_group_name  = "tfstate"
@@ -23,7 +27,14 @@ provider "azurerm" {
   skip_provider_registration = true
 }
 
+
 resource "azurerm_resource_group" "rg" {
   name     = var.azure_resource_group_name
   location = var.location
+}
+
+data "azurerm_client_config" "current" {}
+
+data "azurerm_resources" "example" {
+  resource_group_name = var.azure_resource_group_name
 }

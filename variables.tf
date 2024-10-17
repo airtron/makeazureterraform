@@ -11,7 +11,8 @@ variable "location" {
 }
 
 variable "eventhub_namespace_name" {
-    description = "name this bitch"
-    type = string
-    default = "eventhubsarenotsucky"
+  description = "name this bitch"
+  type        = string
+  default     = "eventhubsarenotsucky"
 }
+
