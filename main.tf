@@ -27,6 +27,10 @@ provider "azurerm" {
   skip_provider_registration = true
 }
 
+module "naming" {
+  source  = "Azure/naming/azurerm"
+  version = "0.4.1"
+}
 
 resource "azurerm_resource_group" "rg" {
   name     = var.azure_resource_group_name
